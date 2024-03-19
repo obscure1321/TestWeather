@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6DCF841C2BA9EF3D009B08DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF841B2BA9EF3D009B08DF /* AppDelegate.swift */; };
+		6DCF841E2BA9EF3D009B08DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF841D2BA9EF3D009B08DF /* SceneDelegate.swift */; };
+		6DCF84252BA9EF3F009B08DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCF84242BA9EF3F009B08DF /* Assets.xcassets */; };
+		6DCF84282BA9EF3F009B08DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DCF84262BA9EF3F009B08DF /* LaunchScreen.storyboard */; };
+		6DCF84322BA9F97A009B08DF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF84312BA9F97A009B08DF /* MainViewController.swift */; };
+		6DCF84342BA9F993009B08DF /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF84332BA9F993009B08DF /* MainInteractor.swift */; };
+		6DCF84362BA9F99E009B08DF /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF84352BA9F99E009B08DF /* MainPresenter.swift */; };
+		6DCF84382BA9F9B1009B08DF /* MainModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF84372BA9F9B1009B08DF /* MainModuleFactory.swift */; };
+		6DCF843B2BA9F9C4009B08DF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF843A2BA9F9C4009B08DF /* MainView.swift */; };
+		6DCF843E2BAA0056009B08DF /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF843D2BAA0056009B08DF /* Factory.swift */; };
+		6DCF84402BAA00C2009B08DF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF843F2BAA00C2009B08DF /* Router.swift */; };
+		6DCF84442BAA06AB009B08DF /* Router+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF84432BAA06AB009B08DF /* Router+Extensions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6DCF84182BA9EF3D009B08DF /* VKTestWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKTestWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DCF841B2BA9EF3D009B08DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6DCF841D2BA9EF3D009B08DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6DCF84242BA9EF3F009B08DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6DCF84272BA9EF3F009B08DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6DCF84292BA9EF3F009B08DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DCF84312BA9F97A009B08DF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6DCF84332BA9F993009B08DF /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		6DCF84352BA9F99E009B08DF /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		6DCF84372BA9F9B1009B08DF /* MainModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleFactory.swift; sourceTree = "<group>"; };
+		6DCF843A2BA9F9C4009B08DF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6DCF843D2BAA0056009B08DF /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		6DCF843F2BAA00C2009B08DF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		6DCF84432BAA06AB009B08DF /* Router+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Extensions.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6DCF84152BA9EF3D009B08DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6DCF840F2BA9EF3D009B08DF = {
+			isa = PBXGroup;
+			children = (
+				6DCF841A2BA9EF3D009B08DF /* VKTestWeather */,
+				6DCF84192BA9EF3D009B08DF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6DCF84192BA9EF3D009B08DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF84182BA9EF3D009B08DF /* VKTestWeather.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DCF841A2BA9EF3D009B08DF /* VKTestWeather */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF842F2BA9F23A009B08DF /* App */,
+				6DCF84412BAA0503009B08DF /* Source */,
+				6DCF84302BA9F94F009B08DF /* MainModule */,
+				6DCF84422BAA068F009B08DF /* Router */,
+				6DCF84292BA9EF3F009B08DF /* Info.plist */,
+			);
+			path = VKTestWeather;
+			sourceTree = "<group>";
+		};
+		6DCF842F2BA9F23A009B08DF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF841B2BA9EF3D009B08DF /* AppDelegate.swift */,
+				6DCF841D2BA9EF3D009B08DF /* SceneDelegate.swift */,
+				6DCF84242BA9EF3F009B08DF /* Assets.xcassets */,
+				6DCF84262BA9EF3F009B08DF /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6DCF84302BA9F94F009B08DF /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF84392BA9F9B7009B08DF /* View */,
+				6DCF843C2BA9F9D7009B08DF /* VIP */,
+				6DCF84372BA9F9B1009B08DF /* MainModuleFactory.swift */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		6DCF84392BA9F9B7009B08DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF843A2BA9F9C4009B08DF /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6DCF843C2BA9F9D7009B08DF /* VIP */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF84312BA9F97A009B08DF /* MainViewController.swift */,
+				6DCF84332BA9F993009B08DF /* MainInteractor.swift */,
+				6DCF84352BA9F99E009B08DF /* MainPresenter.swift */,
+			);
+			path = VIP;
+			sourceTree = "<group>";
+		};
+		6DCF84412BAA0503009B08DF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF843D2BAA0056009B08DF /* Factory.swift */,
+				6DCF843F2BAA00C2009B08DF /* Router.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		6DCF84422BAA068F009B08DF /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				6DCF84432BAA06AB009B08DF /* Router+Extensions.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6DCF84172BA9EF3D009B08DF /* VKTestWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DCF842C2BA9EF3F009B08DF /* Build configuration list for PBXNativeTarget "VKTestWeather" */;
+			buildPhases = (
+				6DCF84142BA9EF3D009B08DF /* Sources */,
+				6DCF84152BA9EF3D009B08DF /* Frameworks */,
+				6DCF84162BA9EF3D009B08DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VKTestWeather;
+			productName = VKTestWeather;
+			productReference = 6DCF84182BA9EF3D009B08DF /* VKTestWeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DCF84102BA9EF3D009B08DF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					6DCF84172BA9EF3D009B08DF = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 6DCF84132BA9EF3D009B08DF /* Build configuration list for PBXProject "VKTestWeather" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6DCF840F2BA9EF3D009B08DF;
+			productRefGroup = 6DCF84192BA9EF3D009B08DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DCF84172BA9EF3D009B08DF /* VKTestWeather */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6DCF84162BA9EF3D009B08DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCF84282BA9EF3F009B08DF /* LaunchScreen.storyboard in Resources */,
+				6DCF84252BA9EF3F009B08DF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DCF84142BA9EF3D009B08DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCF843E2BAA0056009B08DF /* Factory.swift in Sources */,
+				6DCF843B2BA9F9C4009B08DF /* MainView.swift in Sources */,
+				6DCF84382BA9F9B1009B08DF /* MainModuleFactory.swift in Sources */,
+				6DCF84362BA9F99E009B08DF /* MainPresenter.swift in Sources */,
+				6DCF84402BAA00C2009B08DF /* Router.swift in Sources */,
+				6DCF841C2BA9EF3D009B08DF /* AppDelegate.swift in Sources */,
+				6DCF841E2BA9EF3D009B08DF /* SceneDelegate.swift in Sources */,
+				6DCF84342BA9F993009B08DF /* MainInteractor.swift in Sources */,
+				6DCF84442BAA06AB009B08DF /* Router+Extensions.swift in Sources */,
+				6DCF84322BA9F97A009B08DF /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6DCF84262BA9EF3F009B08DF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DCF84272BA9EF3F009B08DF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6DCF842A2BA9EF3F009B08DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6DCF842B2BA9EF3F009B08DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6DCF842D2BA9EF3F009B08DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KKDHHVW363;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VKTestWeather/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-05.VKTestWeather";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6DCF842E2BA9EF3F009B08DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KKDHHVW363;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VKTestWeather/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-05.VKTestWeather";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DCF84132BA9EF3D009B08DF /* Build configuration list for PBXProject "VKTestWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DCF842A2BA9EF3F009B08DF /* Debug */,
+				6DCF842B2BA9EF3F009B08DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DCF842C2BA9EF3F009B08DF /* Build configuration list for PBXNativeTarget "VKTestWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DCF842D2BA9EF3F009B08DF /* Debug */,
+				6DCF842E2BA9EF3F009B08DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6DCF84102BA9EF3D009B08DF /* Project object */;
+}
