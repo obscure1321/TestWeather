@@ -13,6 +13,8 @@ protocol IDisplayServiceData: AnyObject {
 
 final class MainViewController: UIViewController {
     private var interactor: IBusinessLogic
+    private var contentView = MainView()
+    private var weatherManager = WeatherManager()
     
     init(with interactor: IBusinessLogic) {
         self.interactor = interactor
@@ -20,17 +22,33 @@ final class MainViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("there is no xib/storyboard, so init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view = contentView
+        weatherManager.delegate = self
+        getData()
     }
 }
 
 extension MainViewController: IDisplayServiceData {
     func displayServiceData() {
         
+    }
+    
+    func getData() {
+        weatherManager.fetchWeather(cityName: "shymkent")
+    }
+}
+
+extension MainViewController: WeatherManagerDelegate {
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+        
+    }
+    
+    func didFailWithError(error: WeatherError) {
+        print("\(error.code): \(error.localizedDescription)")
     }
 }
