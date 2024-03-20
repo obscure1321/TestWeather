@@ -43,7 +43,7 @@ class OnboardingView: UIView {
         return element
     }()
     
-    // MARK: - life cycle func
+    // MARK: - initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpView()

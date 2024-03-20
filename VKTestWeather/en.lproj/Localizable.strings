@@ -2,3 +2,7 @@
 "onboardingText" = "Never get caught in the rain again";
 
 "onboardButton" = "Get started";
+
+// MARK: - weather manager
+
+"responseLang" = "en";

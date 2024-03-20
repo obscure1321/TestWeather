@@ -8,18 +8,23 @@
 import Foundation
 import CoreLocation
 
+// MARK: - protocol to delegate
 protocol WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
     func didFailWithError(error: WeatherError)
 }
 
+// MARK: - manager to work with api
 struct WeatherManager {
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=030e8e7062f99e74dfcffdeda938f68d&units=metric&lang=ru"
+    // MARK: - properties to use
+    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=030e8e7062f99e74dfcffdeda938f68d&units=metric"
+    let responseLang = NSLocalizedString("responseLang", comment: "")
     
     var delegate: WeatherManagerDelegate?
     
+    // MARK: - funcs to perform request, fetch data and parse json
     func fetchWeather(cityName: String) {
-        let urlString = "\(weatherURL)&q=\(cityName)"
+        let urlString = "\(weatherURL)&lang=\(responseLang)&q=\(cityName)"
         performRequest(with: urlString)
     }
     
@@ -66,12 +71,13 @@ struct WeatherManager {
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             let id = decodedData.weather[0].id
+            let description = decodedData.weather[0].description
             let temp = decodedData.main.temp
             let feelsLike = decodedData.main.feelsLike
             let name = decodedData.name
             let wind = decodedData.wind.speed
             
-            let weather = WeatherModel( cityName: name, conditionId: id, temperature: temp, feelsLike: feelsLike, wind: wind)
+            let weather = WeatherModel( cityName: name, conditionId: id, description: description, temperature: temp, feelsLike: feelsLike, wind: wind)
             return weather
             
         } catch {

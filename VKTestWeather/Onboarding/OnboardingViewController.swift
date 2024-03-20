@@ -8,8 +8,10 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
+    // MARK: - properties
     private var contentView = OnboardingView()
     
+    // MARK: - life cycle func
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contentView
