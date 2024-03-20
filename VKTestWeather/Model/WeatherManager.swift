@@ -14,7 +14,7 @@ protocol WeatherManagerDelegate {
 }
 
 struct WeatherManager {
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=030e8e7062f99e74dfcffdeda938f68d&units=metric"
+    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=030e8e7062f99e74dfcffdeda938f68d&units=metric&lang=ru"
     
     var delegate: WeatherManagerDelegate?
     
@@ -47,7 +47,6 @@ struct WeatherManager {
                 case 200...299:
                     if let weather = self.parseJSON(data) {
                         self.delegate?.didUpdateWeather(self, weather: weather)
-                        print(weather)
                     }
                 default:
                     let errorDescription = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)

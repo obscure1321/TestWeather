@@ -13,8 +13,7 @@ protocol IDisplayServiceData: AnyObject {
 
 final class MainViewController: UIViewController {
     private var interactor: IBusinessLogic
-    private var contentView = MainView()
-    private var weatherManager = WeatherManager()
+    private var contentView = MainView()    
     
     init(with interactor: IBusinessLogic) {
         self.interactor = interactor
@@ -28,27 +27,13 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contentView
-        weatherManager.delegate = self
-        getData()
+        interactor.showData()
     }
 }
 
 extension MainViewController: IDisplayServiceData {
     func displayServiceData() {
-        
-    }
-    
-    func getData() {
-        weatherManager.fetchWeather(cityName: "shymkent")
+        print("здесь будет код для отображения данных из presenter")
     }
 }
 
-extension MainViewController: WeatherManagerDelegate {
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
-        
-    }
-    
-    func didFailWithError(error: WeatherError) {
-        print("\(error.code): \(error.localizedDescription)")
-    }
-}

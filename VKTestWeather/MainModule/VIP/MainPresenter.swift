@@ -21,6 +21,7 @@ final class MainPresenter {
 
 extension MainPresenter: IPresentScreenData {
     func presentScreenData() {
-        
+        print("здесь будет код для передачи данных в vc")
+        viewController?.displayServiceData()
     }
 }
