@@ -1,0 +1,8 @@
+// MARK: - onboarding
+"onboardingText" = "Больше не попадете под неожиданный дождь";
+
+"onboardButton" = "Начать";
+
+// MARK: - weather manager
+
+"responseLang" = "ru";
