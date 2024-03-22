@@ -32,8 +32,12 @@ final class MainInteractor {
 // MARK: - extension for WeatherManager protocol
 extension MainInteractor: WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
-        presenter.presentScreenData(with: weather)
+        presenter.presentWeatherData(with: weather)
         print(weather)
+    }
+    
+    func didUpdateForecast(_ weatherManager: WeatherManager, forecast: [ForecastModel]) {
+        presenter.presentForecastData(with: forecast)
     }
     
     func didFailWithError(error: WeatherError) {
