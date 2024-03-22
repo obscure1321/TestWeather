@@ -16,30 +16,112 @@ protocol WeatherManagerDelegate {
 }
 
 // MARK: - manager to work with api
-struct WeatherManager {
+final class WeatherManager {
     // MARK: - properties to use
+    enum Constants {
+        static let scheme = "https"
+        static let weatherHost = "api.openweathermap.org"
+        static let weatherPath = "/data/2.5/weather"
+        static let weatherAPIKey = "030e8e7062f99e74dfcffdeda938f68d"
+        
+        static let forecastHost = "api.weatherbit.io"
+        static let forecastPath = "/v2.0/forecast/daily"
+        static let forecastAPIKey = "205bfe2d7f224abda472c219ce5f208b"
+    }
+
     let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=030e8e7062f99e74dfcffdeda938f68d&units=metric"
-    let forecastURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=Almaty&key=205bfe2d7f224abda472c219ce5f208b"
+    let forecastURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=Almaty&key=205bfe2d7f224abda472c219ce5f208b&units=metric&lang=ru"
     let responseLang = NSLocalizedString("responseLang", comment: "")
     
     var delegate: WeatherManagerDelegate?
     
     // MARK: - funcs to perform request, fetch data and parse json
+//    private func buildURL(host: String, path: String, appid: String? = nil, key: String? = nil, city: String? = nil, lat: String? = nil, lon: String? = nil) -> URL? {
+//        var components = URLComponents()
+//        components.scheme = Constants.scheme
+//        components.host = host
+//        components.path = path
+//        
+//        let queryItemAppID = URLQueryItem(name: "appid", value: appid)
+//        let queryItemKey = URLQueryItem(name: "key", value: key)
+//        let queryItemCity = URLQueryItem(name: "city", value: city)
+//        let queryItemLat = URLQueryItem(name: "lat", value: lat)
+//        let queryItemLon = URLQueryItem(name: "lon", value: lon)
+//        let querryItemLang = URLQueryItem(name: "lang", value: NSLocalizedString("responseLang", comment: ""))
+//        
+//        components.queryItems = [queryItemAppID, queryItemKey, queryItemCity, queryItemLat, queryItemLon, querryItemLang]
+//        
+//        return components.url
+//    }
+    
+    private func buildURL(
+        host: String,
+        path: String,
+        appid: String? = nil,
+        key: String? = nil,
+        queryCity: String? = nil,
+        city: String? = nil,
+        lat: String? = nil,
+        lon: String? = nil) -> URL? {
+        var components = URLComponents()
+        components.scheme = Constants.scheme
+        components.host = host
+        components.path = path
+        
+        let queryItems: [URLQueryItem] = [
+            appid.map { URLQueryItem(name: "appid", value: $0) },
+            key.map { URLQueryItem(name: "key", value: $0) },
+            city.map { URLQueryItem(name: queryCity ?? "" , value: $0) },
+            lat.map { URLQueryItem(name: "lat", value: $0) },
+            lon.map { URLQueryItem(name: "lon", value: $0) },
+            URLQueryItem(name: "lang", value: NSLocalizedString("responseLang", comment: ""))
+        ]
+        .compactMap { $0 }
+        
+        components.queryItems = queryItems.isEmpty ? nil : queryItems
+        
+        return components.url
+    }
+    
     func fetchWeather(cityName: String) {
-        let urlString = "\(weatherURL)&lang=\(responseLang)&q=\(cityName)"
-        getWeather(with: urlString)
-        getForecast(with: forecastURL)
+        getWeather(with: buildURL(
+            host: Constants.weatherHost,
+            path: Constants.weatherPath,
+            appid: Constants.weatherAPIKey,
+            queryCity: "q",
+            city: cityName
+        ))
+        
+        getForecast(with: buildURL(
+            host: Constants.forecastHost,
+            path: Constants.forecastPath,
+            key: Constants.forecastAPIKey,
+            queryCity: "city",
+            city: cityName
+        ))
     }
     
     func fetchWeatherWithGeo(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
-        getWeather(with: urlString)
-        getForecast(with: forecastURL)
+        getWeather(with: buildURL(
+            host: Constants.weatherHost,
+            path: Constants.weatherPath,
+            appid: Constants.weatherAPIKey,
+            lat: String(latitude),
+            lon: String(longitude)
+        ))
+        
+        getForecast(with: buildURL(
+            host: Constants.forecastHost,
+            path: Constants.forecastPath,
+            key: Constants.forecastAPIKey,
+            lat: String(latitude),
+            lon: String(longitude)
+        ))
     }
     
-    func getWeather(with urlString: String) {
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL: \(urlString)")
+    func getWeather(with url: URL?) {
+        guard let url = url else {
+            print("Invalid URL: URL is nil")
             return
         }
         
@@ -70,9 +152,9 @@ struct WeatherManager {
         task.resume()
     }
     
-    func getForecast(with urlString: String) {
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL: \(urlString)")
+    func getForecast(with url: URL?) {
+        guard let url = url else {
+            print("Invalid URL: URL is nil")
             return
         }
         
@@ -116,7 +198,14 @@ struct WeatherManager {
             let name = decodedData.name
             let wind = decodedData.wind.speed
             
-            let weather = WeatherModel( cityName: name, conditionId: id, description: description, temperature: Int(temp), feelsLike: feelsLike, wind: Double(wind))
+            let weather = WeatherModel(
+                cityName: name,
+                conditionId: id,
+                description: description,
+                temperature: Int(temp),
+                feelsLike: feelsLike,
+                wind: Double(wind))
+            
             return weather
             
         } catch {
@@ -125,25 +214,6 @@ struct WeatherManager {
             return nil
         }
     }
-    
-//    func parseForecastJSON(_ forecastData: Data) -> ForecastModel? {
-//        let decoder = JSONDecoder()
-//        do {
-//            let decodedData = try decoder.decode(ForecastData.self, from: forecastData)
-//            let datum = decodedData.data
-//            let temp = datum[0].temp
-//            let date = datum[0].validDate
-//            let wind = datum[0].windSpd
-//            
-//            let weather = ForecastModel(temperature: Int(temp), wind: wind, dateTime: date)
-//            return weather
-//            
-//        } catch {
-//            let weatherError = WeatherError(description: error.localizedDescription, code: 0)
-//            delegate?.didFailWithError(error: weatherError)
-//            return nil
-//        }
-//    }
     
     func parseForecastJSON(_ forecastData: Data) -> [ForecastModel]? {
         let decoder = JSONDecoder()
@@ -161,7 +231,7 @@ struct WeatherManager {
             }
             
             return forecastModels
-            
+
         } catch let error {
             print("Decoding error:", error)
             let weatherError = WeatherError(description: error.localizedDescription, code: 0)

@@ -27,3 +27,16 @@ extension UILabel {
     }
 }
 
+extension UITableView {
+    func setUp(handler: AnyObject, cellClass: AnyClass, cellID: String) {
+        backgroundColor = .clear
+        alwaysBounceVertical = true
+        showsVerticalScrollIndicator = false
+        translatesAutoresizingMaskIntoConstraints = false
+        separatorStyle = .singleLine
+        delegate = handler as? UITableViewDelegate
+        dataSource = handler as? UITableViewDataSource
+        register(cellClass, forCellReuseIdentifier: cellID)
+    }
+}
+
