@@ -15,5 +15,12 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contentView
+        contentView.mainButton.addTarget(self, action: #selector(getStarted), for: .touchUpInside)
+    }
+    
+    @objc func getStarted() {
+        UserDefaults.standard.set(true, forKey: "onboarded")
+        self.dismiss(animated: true)
+        Router.mainModuleScreen()
     }
 }

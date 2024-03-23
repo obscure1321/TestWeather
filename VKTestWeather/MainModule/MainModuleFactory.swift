@@ -12,7 +12,7 @@ final class MainModuleFactory: Factory {
     
     typealias ViewController = MainViewController
     
-    func build(from context: Void) -> MainViewController {
+    func build(from context: Void) -> ViewController {
         let presenter = MainPresenter()
         let interactor = MainInteractor(with: presenter)
         let viewController = MainViewController(with: interactor)

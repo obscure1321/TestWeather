@@ -8,14 +8,15 @@
 import Foundation
 // MARK: - presenters protocol
 protocol IPresentScreenData: AnyObject {
-    func presentScreenData(with  viewModel: WeatherModel)
+    func presentWeatherData(with viewModel: WeatherModel)
+    func presentForecastData(with viewModel: [ForecastModel])
 }
 
 final class MainPresenter {
     // MARK: - properties
     weak var viewController: IDisplayServiceData?
     
-    //MARK: - initialization
+    // MARK: - initialization
     init(viewController: IDisplayServiceData? = nil) {
         self.viewController = viewController
     }
@@ -23,8 +24,11 @@ final class MainPresenter {
 
 // MARK: - extension for protocol submission
 extension MainPresenter: IPresentScreenData {
-    func presentScreenData(with viewModel: WeatherModel) {
-        print("здесь будет код для передачи данных в vc")
-        viewController?.displayServiceData(with: viewModel)
+    func presentWeatherData(with viewModel: WeatherModel) {
+        viewController?.displayWeatherData(with: viewModel)
+    }
+    
+    func presentForecastData(with viewModels: [ForecastModel]) {
+        viewController?.displayForecastData(with: viewModels)
     }
 }
