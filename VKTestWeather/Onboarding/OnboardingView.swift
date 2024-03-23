@@ -31,7 +31,7 @@ class OnboardingView: UIView {
         return element
     }()
     
-    private var mainButton: UIButton = {
+    var mainButton: UIButton = {
         let element = UIButton()
         element.setTitleColor(.white, for: .normal)
         element.setTitle(NSLocalizedString("onboardButton", comment: ""), for: .normal)
@@ -60,7 +60,6 @@ extension OnboardingView {
         addSubview(imageView)
         addSubview(mainLabel)
         addSubview(mainButton)
-        mainButton.addTarget(self, action: #selector(getStarted), for: .touchUpInside)
         setConstraints()
     }
     
@@ -82,10 +81,4 @@ extension OnboardingView {
             mainLabel.bottomAnchor.constraint(equalTo: mainButton.topAnchor, constant: -40)
         ])
     }
-    
-    @objc func getStarted() {
-        UserDefaults.standard.set(true, forKey: "onboarded")
-        print("akdbhjz")
-    }
 }
-

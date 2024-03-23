@@ -16,30 +16,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let isOnboarded = UserDefaults.standard.bool(forKey: "onboarded")
         window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = Router.startRouting()
         
         if isOnboarded {
-            window?.rootViewController = Router.startRouting()
             Router.mainModuleScreen()
         } else {
-            window?.rootViewController = OnboardingViewController()
+            Router.onboardingScreen()
         }
         
         window?.makeKeyAndVisible()
-    }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
     }
 }
 

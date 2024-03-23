@@ -29,7 +29,7 @@ extension UILabel {
 
 extension UITableView {
     func setUp(handler: AnyObject, cellClass: AnyClass, cellID: String) {
-        backgroundColor = .clear
+        backgroundColor = .lightGray
         alwaysBounceVertical = true
         showsVerticalScrollIndicator = false
         translatesAutoresizingMaskIntoConstraints = false
@@ -37,6 +37,24 @@ extension UITableView {
         delegate = handler as? UITableViewDelegate
         dataSource = handler as? UITableViewDataSource
         register(cellClass, forCellReuseIdentifier: cellID)
+    }
+}
+
+extension UIView {
+    func setUp(color: UIColor, radius: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = color
+        layer.cornerRadius = radius
+    }
+}
+
+extension UIImageView {
+    func setUp(radius: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        layer.cornerRadius = radius
+        contentMode = .scaleAspectFill
+        clipsToBounds = true
+        backgroundColor = .clear
     }
 }
 

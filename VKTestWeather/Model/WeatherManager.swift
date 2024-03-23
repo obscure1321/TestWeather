@@ -18,6 +18,8 @@ protocol WeatherManagerDelegate {
 // MARK: - manager to work with api
 final class WeatherManager {
     // MARK: - properties to use
+    var delegate: WeatherManagerDelegate?
+    
     enum Constants {
         static let scheme = "https"
         static let weatherHost = "api.openweathermap.org"
@@ -28,32 +30,8 @@ final class WeatherManager {
         static let forecastPath = "/v2.0/forecast/daily"
         static let forecastAPIKey = "205bfe2d7f224abda472c219ce5f208b"
     }
-
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=030e8e7062f99e74dfcffdeda938f68d&units=metric"
-    let forecastURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=Almaty&key=205bfe2d7f224abda472c219ce5f208b&units=metric&lang=ru"
-    let responseLang = NSLocalizedString("responseLang", comment: "")
-    
-    var delegate: WeatherManagerDelegate?
     
     // MARK: - funcs to perform request, fetch data and parse json
-//    private func buildURL(host: String, path: String, appid: String? = nil, key: String? = nil, city: String? = nil, lat: String? = nil, lon: String? = nil) -> URL? {
-//        var components = URLComponents()
-//        components.scheme = Constants.scheme
-//        components.host = host
-//        components.path = path
-//        
-//        let queryItemAppID = URLQueryItem(name: "appid", value: appid)
-//        let queryItemKey = URLQueryItem(name: "key", value: key)
-//        let queryItemCity = URLQueryItem(name: "city", value: city)
-//        let queryItemLat = URLQueryItem(name: "lat", value: lat)
-//        let queryItemLon = URLQueryItem(name: "lon", value: lon)
-//        let querryItemLang = URLQueryItem(name: "lang", value: NSLocalizedString("responseLang", comment: ""))
-//        
-//        components.queryItems = [queryItemAppID, queryItemKey, queryItemCity, queryItemLat, queryItemLon, querryItemLang]
-//        
-//        return components.url
-//    }
-    
     private func buildURL(
         host: String,
         path: String,
@@ -74,7 +52,8 @@ final class WeatherManager {
             city.map { URLQueryItem(name: queryCity ?? "" , value: $0) },
             lat.map { URLQueryItem(name: "lat", value: $0) },
             lon.map { URLQueryItem(name: "lon", value: $0) },
-            URLQueryItem(name: "lang", value: NSLocalizedString("responseLang", comment: ""))
+            URLQueryItem(name: "lang", value: NSLocalizedString("responseLang", comment: "")),
+            URLQueryItem(name: "units", value: "metric")
         ]
         .compactMap { $0 }
         
@@ -199,8 +178,8 @@ final class WeatherManager {
             let wind = decodedData.wind.speed
             
             let weather = WeatherModel(
-                cityName: name,
-                conditionId: id,
+                cityName: name, 
+                id: id,
                 description: description,
                 temperature: Int(temp),
                 feelsLike: feelsLike,
@@ -225,7 +204,9 @@ final class WeatherManager {
                 let weather = ForecastModel(
                     temperature: Int(datum.temp),
                     wind: datum.windSpd,
-                    dateTime: datum.validDate
+                    dateTime: datum.validDate,
+                    description: datum.weather.description, 
+                    code: datum.weather.code
                 )
                 forecastModels.append(weather)
             }

@@ -8,7 +8,7 @@
 import UIKit
 
 public final class Router {
-    private static let navigationController = UINavigationController()
+    static let navigationController = UINavigationController()
     private init() {}
 }
 

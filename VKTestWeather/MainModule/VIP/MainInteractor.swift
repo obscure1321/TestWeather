@@ -22,18 +22,12 @@ final class MainInteractor {
         self.presenter = presenter
         weatherManager.delegate = self
     }
-    
-    // MARK: - flow func
-    func getData() {
-        
-    }
 }
 
 // MARK: - extension for WeatherManager protocol
 extension MainInteractor: WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         presenter.presentWeatherData(with: weather)
-        print(weather)
     }
     
     func didUpdateForecast(_ weatherManager: WeatherManager, forecast: [ForecastModel]) {
@@ -48,7 +42,6 @@ extension MainInteractor: WeatherManagerDelegate {
 // MARK: - extension for protocol submission
 extension MainInteractor: IBusinessLogic {
     func showData() {
-        print("подтягиваем данные")
         weatherManager.fetchWeather(cityName: "shymkent")
     }
 }

@@ -8,9 +8,7 @@
 import Foundation
 
 struct ForecastData: Codable {
-    let city_name, country_code: String
     let data: [Datum]
-    let lat, lon, state_code, timezone: String
 }
 
 struct Datum: Codable {
@@ -20,6 +18,7 @@ struct Datum: Codable {
     let temp: Double
     let validDate: String
     let windSpd: Double
+    let weather: Forecast
     
     enum CodingKeys: String, CodingKey {
         case clouds
@@ -28,5 +27,11 @@ struct Datum: Codable {
         case temp
         case validDate = "valid_date"
         case windSpd = "wind_spd"
+        case weather
     }
+}
+
+struct Forecast: Codable {
+    let code: Int
+    let description: String
 }

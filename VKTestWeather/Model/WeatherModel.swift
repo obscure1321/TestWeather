@@ -9,34 +9,38 @@ import Foundation
 
 struct WeatherModel {
     let cityName: String
-    let conditionId: Int
+    let id: Int
     let description: String
     let temperature: Int
     let feelsLike: Double
     let wind: Double
     
-    var temperatureString: String {
-        return String(format: "%.1f", temperature)
-    }
-    
     var conditionName: String {
-        switch conditionId {
+        switch id {
         case 200...232:
-            return "cloud.bolt"
+            return "thunderStorm"
         case 300...321:
-            return "cloud.drizzle"
-        case 500...531:
-            return "cloud.rain"
+            return "showerRain"
+        case 500...504:
+            return "rain"
+        case 511:
+            return "snow"
+        case 520...531:
+            return "showerRain"
         case 600...622:
-            return "cloud.snow"
+            return "snow"
         case 701...781:
-            return "cloud.fog"
+            return "mist"
         case 800:
-            return "sun.max"
-        case 801...804:
-            return "cloud.bolt"
+            return "clearSky"
+        case 801:
+            return "fewClouds"
+        case 802:
+            return "clouds"
+        case 803...804:
+            return "brokenClouds"
         default:
-            return "cloud"
+            return "clouds"
         }
     }
 }

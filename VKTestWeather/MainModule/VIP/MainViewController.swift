@@ -9,7 +9,8 @@ import UIKit
 
 // MARK: - viewcontrollers protocol
 protocol IDisplayServiceData: AnyObject {
-    func displayServiceData(with viewModel: WeatherModel)
+    func displayWeatherData(with viewModel: WeatherModel)
+    func displayForecastData(with viewModels: [ForecastModel])
 }
 
 final class MainViewController: UIViewController {
@@ -38,10 +39,15 @@ final class MainViewController: UIViewController {
 
 // MARK: - extension for protocol submission
 extension MainViewController: IDisplayServiceData {
-    func displayServiceData(with viewModel: WeatherModel) {
-        print("здесь будет код для отображения данных из presenter")
+    func displayWeatherData(with viewModel: WeatherModel) {
         DispatchQueue.main.async { [weak self] in
             self?.contentView.configure(with: viewModel)
+        }
+    }
+    
+    func displayForecastData(with viewModels: [ForecastModel]) {
+        DispatchQueue.main.async { [weak self] in
+            self?.contentView.configureForecast(with: viewModels)
         }
     }
 }

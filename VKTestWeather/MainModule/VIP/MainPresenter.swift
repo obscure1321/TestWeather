@@ -25,12 +25,10 @@ final class MainPresenter {
 // MARK: - extension for protocol submission
 extension MainPresenter: IPresentScreenData {
     func presentWeatherData(with viewModel: WeatherModel) {
-        print("здесь будет код для передачи данных в vc")
-        viewController?.displayServiceData(with: viewModel)
+        viewController?.displayWeatherData(with: viewModel)
     }
     
-    func presentForecastData(with viewModel: [ForecastModel]) {
-        print("здесь будет код для передачи данных в vc")
-        print(viewModel)
+    func presentForecastData(with viewModels: [ForecastModel]) {
+        viewController?.displayForecastData(with: viewModels)
     }
 }

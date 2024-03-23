@@ -8,7 +8,13 @@
 import Foundation
 
 extension Router {
+    static func onboardingScreen() {
+        performRoute(factory: OnboardingFactory(), context: ())
+    }
+    
     static func mainModuleScreen() {
         performRoute(factory: MainModuleFactory(), context: ())
+        navigationController.viewControllers.last?.navigationItem.setHidesBackButton(true, animated: false)
     }
 }
+
