@@ -18,7 +18,6 @@ final class MainViewController: UIViewController {
     private var interactor: IBusinessLogic
     private var contentView = MainView()    
     
-    
     // MARK: - initialization
     init(with interactor: IBusinessLogic) {
         self.interactor = interactor
@@ -51,4 +50,3 @@ extension MainViewController: IDisplayServiceData {
         }
     }
 }
-

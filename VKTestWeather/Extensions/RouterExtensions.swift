@@ -17,4 +17,3 @@ extension Router {
         navigationController.viewControllers.last?.navigationItem.setHidesBackButton(true, animated: false)
     }
 }
-

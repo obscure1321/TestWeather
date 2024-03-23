@@ -19,7 +19,6 @@ final class MainView: UIView {
     var tableView = UITableView()
     var forecastArray = [ForecastModel]()
     
-    
     // MARK: - initialize
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,7 +44,7 @@ extension MainView {
     func configureProperties() {
         mainImgView.setUp(radius: 0)
         mainImgView.image = UIImage(named: "background")
-        
+
         weatherView.setUp(color: .clear, radius: 40)
         weatherView.addBlur()
     
@@ -149,7 +148,9 @@ extension MainView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "Cell",
+            for: indexPath) as? TableViewCell else {
             return UITableViewCell()
         }
         cell.selectionStyle = .none

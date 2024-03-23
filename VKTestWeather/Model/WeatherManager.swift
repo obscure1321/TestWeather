@@ -164,8 +164,6 @@ final class WeatherManager {
         task.resume()
     }
     
-    
-    
     func parseWeatherJSON(_ weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
@@ -220,5 +218,4 @@ final class WeatherManager {
             return nil
         }
     }
-
 }

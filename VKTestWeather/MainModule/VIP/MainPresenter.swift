@@ -16,7 +16,7 @@ final class MainPresenter {
     // MARK: - properties
     weak var viewController: IDisplayServiceData?
     
-    //MARK: - initialization
+    // MARK: - initialization
     init(viewController: IDisplayServiceData? = nil) {
         self.viewController = viewController
     }
