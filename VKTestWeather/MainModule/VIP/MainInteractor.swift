@@ -42,6 +42,6 @@ extension MainInteractor: WeatherManagerDelegate {
 // MARK: - extension for protocol submission
 extension MainInteractor: IBusinessLogic {
     func showData() {
-        weatherManager.fetchWeather(cityName: "shymkent")
+        weatherManager.fetchWeather(cityName: "almaty")
     }
 }

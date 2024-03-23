@@ -69,19 +69,19 @@ extension TableViewCell {
         tempLabel.setUp(linesNumber: 1,
                         alignment: .left,
                         labelText: "",
-                        color: .black,
+                        color: .label,
                         fontSize: 24,
                         weight: .bold)
         descLabel.setUp(linesNumber: 1,
                         alignment: .left,
                         labelText: "sfg",
-                        color: .black,
+                        color: .label,
                         fontSize: 20,
                         weight: .medium)
         dateLabel.setUp(linesNumber: 1,
                         alignment: .right,
                         labelText: "",
-                        color: .black,
+                        color: .label,
                         fontSize: 20,
                         weight: .medium)
         imgView.setUp(radius: 15)

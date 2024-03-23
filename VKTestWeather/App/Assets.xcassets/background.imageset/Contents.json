@@ -1,17 +1,83 @@
 {
   "images" : [
     {
-      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a.jpeg",
+      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a 2.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a 1.jpeg",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a 3.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "maiak_noch_vektor_143019_938x1668.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a 2.jpeg",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a 4.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "maiak_noch_vektor_143019_938x1668 1.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a 1.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "E92B1A79-8404-4DA3-A40D-13C539F3560F_1_201_a 5.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "maiak_noch_vektor_143019_938x1668 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
