@@ -31,9 +31,10 @@ private extension OnboardingView {
         addSubview(mainLabel)
         addSubview(mainButton)
         setConstraints()
+        configureProperties()
     }
     
-    func congifureProperties() {
+    func configureProperties() {
         imageView.setUpImageView(radius: 0)
         imageView.image = UIImage(named: "onboarding")
         
