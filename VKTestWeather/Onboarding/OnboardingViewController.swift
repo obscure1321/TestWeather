@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
     // MARK: - properties
     private var contentView = OnboardingView()
     
@@ -18,7 +18,7 @@ class OnboardingViewController: UIViewController {
         contentView.mainButton.addTarget(self, action: #selector(getStarted), for: .touchUpInside)
     }
     
-    @objc func getStarted() {
+    @objc private func getStarted() {
         UserDefaults.standard.set(true, forKey: "onboarded")
         self.dismiss(animated: true)
         Router.mainModuleScreen()

@@ -29,8 +29,31 @@ final class TableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - extension for internal methods
 extension TableViewCell {
-    // MARK: - flow funcs
+    func configure(temp: Int, date: String, desc: String, code: String ) {
+        self.tempLabel.text = "\(temp) °C"
+        self.dateLabel.text = formatDate(date) ?? "???"
+        self.descLabel.text = desc
+        self.imgView.image = UIImage(named: code)
+    }
+    
+    func formatDate(_ dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        guard let date = dateFormatter.date(from: dateString) else {
+            return nil
+        }
+        
+        dateFormatter.dateFormat = "dd MMMM"
+        let formattedDate = dateFormatter.string(from: date)
+        return formattedDate
+    }
+}
+
+// MARK: - extension for private flow funcs
+private extension TableViewCell {
     func addViews() {
         [mainView, imgView, tempLabel, descLabel, dateLabel].forEach { addSubview($0) }
     }
@@ -65,48 +88,27 @@ extension TableViewCell {
     }
     
     func configureProperties() {
-        mainView.setUp(color: .clear, radius: 20)
+        mainView.setUpView(color: .clear, radius: 20)
         mainView.addBlur(radius: 20)
         
-        tempLabel.setUp(linesNumber: 0,
+        tempLabel.setUpLabel(linesNumber: 0,
                         alignment: .left,
                         labelText: "",
                         color: .label,
                         fontSize: 24,
                         weight: .bold)
-        descLabel.setUp(linesNumber: 0,
+        descLabel.setUpLabel(linesNumber: 0,
                         alignment: .left,
                         labelText: "sfg",
                         color: .label,
                         fontSize: 20,
                         weight: .medium)
-        dateLabel.setUp(linesNumber: 0,
+        dateLabel.setUpLabel(linesNumber: 0,
                         alignment: .right,
                         labelText: "",
                         color: .label,
                         fontSize: 20,
                         weight: .medium)
-        imgView.setUp(radius: 15)
-    }
-    
-    // MARK: - configuring cell and formating date
-    func configure(temp: Int, date: String, desc: String, code: String ) {
-        self.tempLabel.text = "\(temp) °C"
-        self.dateLabel.text = formatDate(date) ?? "???"
-        self.descLabel.text = desc
-        self.imgView.image = UIImage(named: code)
-    }
-    
-    func formatDate(_ dateString: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        guard let date = dateFormatter.date(from: dateString) else {
-            return nil
-        }
-        
-        dateFormatter.dateFormat = "dd MMMM"
-        let formattedDate = dateFormatter.string(from: date)
-        return formattedDate
+        imgView.setUpImageView(radius: 15)
     }
 }

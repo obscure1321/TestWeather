@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 // MARK: - protocol to delegate
-protocol WeatherManagerDelegate {
+protocol WeatherManagerDelegate: AnyObject {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
     func didUpdateForecast(_ weatherManager: WeatherManager, forecast: [ForecastModel])
     func didFailWithError(error: WeatherError)
@@ -164,6 +164,7 @@ final class WeatherManager {
         task.resume()
     }
     
+    // MARK: - funcs to parse the data
     func parseWeatherJSON(_ weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
@@ -197,7 +198,6 @@ final class WeatherManager {
             for datum in decodedData.data {
                 let weather = ForecastModel(
                     temperature: Int(datum.temp),
-                    wind: datum.windSpd,
                     dateTime: datum.validDate,
                     description: datum.weather.description, 
                     code: datum.weather.code

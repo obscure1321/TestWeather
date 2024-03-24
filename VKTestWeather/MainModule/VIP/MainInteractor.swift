@@ -46,6 +46,7 @@ extension MainInteractor: WeatherManagerDelegate {
     }
 }
 
+// MARK: - extension for CLLocationManagerDelegate implementation
 extension MainInteractor: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -71,8 +72,10 @@ extension MainInteractor: CLLocationManagerDelegate {
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
             
+            UserDefaults.standard.set(lat, forKey: "cachedLatitude")
+            UserDefaults.standard.set(lon, forKey: "cachedLongitude")
+            
             weatherManager.fetchWeatherWithGeo(latitude: lat, longitude: lon)
-            print("got location")
         }
     }
     

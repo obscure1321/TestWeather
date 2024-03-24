@@ -7,15 +7,23 @@
 
 import UIKit
 
+// MARK: - UIButton
 extension UIButton {
-    func setUpButton(image: UIImage, radius: CGFloat) {
-        setBackgroundImage(image, for: .normal)
-        backgroundColor = .blue
+    func setUpButton(image: UIImage?, radius: CGFloat, title: String?) {
+        if let image = image {
+            setImage(image, for: .normal)
+        }
+        setTitle(title, for: .normal)
+        tintColor = .white
+        backgroundColor = .systemBlue
         layer.cornerRadius = radius
+        titleLabel?.adjustsFontSizeToFitWidth = true
+        titleLabel?.minimumScaleFactor = 0.5
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
+// MARK: - UITextField
 extension UITextField {
     func setUpTextField() {
         backgroundColor = UIColor(white: 0.5, alpha: 0.5)
@@ -36,8 +44,9 @@ extension UITextField {
     }
 }
 
+// MARK: - UILabel
 extension UILabel {
-    func setUp(
+    func setUpLabel(
         linesNumber: Int,
         alignment: NSTextAlignment,
         labelText: String,
@@ -56,8 +65,9 @@ extension UILabel {
     }
 }
 
+// MARK: - UITableView
 extension UITableView {
-    func setUp(handler: AnyObject, cellClass: AnyClass, cellID: String) {
+    func setUpTable(handler: AnyObject, cellClass: AnyClass, cellID: String) {
         backgroundColor = .clear
         alwaysBounceVertical = true
         showsVerticalScrollIndicator = false
@@ -69,8 +79,9 @@ extension UITableView {
     }
 }
 
+// MARK: - UIView
 extension UIView {
-    func setUp(color: UIColor, radius: CGFloat) {
+    func setUpView(color: UIColor, radius: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = color
         layer.cornerRadius = radius
@@ -95,8 +106,9 @@ extension UIView {
     }
 }
 
+// MARK: - UIImageView
 extension UIImageView {
-    func setUp(radius: CGFloat) {
+    func setUpImageView(radius: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = radius
         contentMode = .scaleAspectFill

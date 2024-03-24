@@ -9,7 +9,6 @@ import Foundation
 
 struct ForecastModel {
     let temperature: Int
-    let wind: Double
     let dateTime: String
     let description: String
     let code: Int

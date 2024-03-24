@@ -32,29 +32,11 @@ final class MainViewController: UIViewController {
     // MARK: - life cycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = contentView
-        contentView.geoButton.addTarget(self,
-                                        action: #selector(getGeolocation),
-                                        for: .touchUpInside)
-        contentView.textFiled.delegate = self
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissNumPad))
-        contentView.addGestureRecognizer(tapGesture)
-        
-        interactor.reloadDataWithGeo()
+        configure()
     }
 }
 
-// MARK: - extension for objc funcs
-extension MainViewController {
-    @objc func getGeolocation() {
-        self.interactor.reloadDataWithGeo()
-    }
-    
-    @objc func dismissNumPad() {
-        contentView.endEditing(true)
-    }
-}
-
+// MARK: - extension for UITextFieldDelegate implementation
 extension MainViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else {
@@ -92,5 +74,30 @@ extension MainViewController: IDisplayServiceData {
                                    style: .default)
         alert.addAction(action)
         present(alert, animated: true)
+    }
+}
+
+// MARK: - extension for private flow funcs
+private extension MainViewController {
+    func configure() {
+        view = contentView
+        
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(dismissNumPad))
+        contentView.geoButton.addTarget(self,
+                                        action: #selector(getGeolocation),
+                                        for: .touchUpInside)
+        contentView.textFiled.delegate = self
+        contentView.addGestureRecognizer(tapGesture)
+        
+        interactor.reloadDataWithGeo()
+    }
+    
+    @objc func getGeolocation() {
+        self.interactor.reloadDataWithGeo()
+    }
+    
+    @objc func dismissNumPad() {
+        contentView.endEditing(true)
     }
 }

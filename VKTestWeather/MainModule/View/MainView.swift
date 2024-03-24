@@ -34,7 +34,55 @@ final class MainView: UIView {
     }
 }
 
+// MARK: - extension for internal funcs
 extension MainView {
+    func configure(with viewModel: WeatherModel) {
+        self.cityName.text = viewModel.cityName
+        self.tempLabel.text = "\(viewModel.temperature) °C"
+        self.descriptionLabel.text = viewModel.description
+        self.imageView.image = UIImage(named: viewModel.conditionName)
+    }
+    
+    func configureForecast(with viewModels: [ForecastModel]) {
+        forecastArray = viewModels
+        forecastArray.removeFirst()
+        tableView.reloadData()
+    }
+}
+
+// MARK: - extension for UITableViewDataSource funcs
+extension MainView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        forecastArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "Cell",
+            for: indexPath) as? TableViewCell else {
+            return UITableViewCell()
+        }
+        cell.selectionStyle = .none
+        if !forecastArray.isEmpty {
+            let element = forecastArray[indexPath.row]
+            cell.configure(temp: element.temperature,
+                           date: element.dateTime,
+                           desc: element.description,
+                           code: element.conditionName)
+        }
+        return cell
+    }
+}
+
+// MARK: - extension for UITableViewDelegate funcs
+extension MainView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.frame.size.height / 3.5
+    }
+}
+
+// MARK: - extension for private flow func
+private extension MainView {
     // MARK: - flow funcs
     func addViews() {
         [mainImgView, geoButton, textFiled, weatherView, tableView].forEach { addSubview($0) }
@@ -42,34 +90,36 @@ extension MainView {
     }
     
     func configureProperties() {
-        mainImgView.setUp(radius: 0)
+        mainImgView.setUpImageView(radius: 0)
         mainImgView.image = UIImage(named: "background")
         
-        geoButton.setUpButton(image: UIImage(systemName: "location.north.circle")!, radius: 22)
+        geoButton.setUpButton(image: UIImage(systemName: "location.north.circle.fill"), 
+                              radius: 22,
+                              title: nil)
         
         textFiled.setUpTextField()
         textFiled.setLeftPadding(15)
         
-        weatherView.setUp(color: .clear, radius: 40)
+        weatherView.setUpView(color: .clear, radius: 40)
         weatherView.addBlur(radius: 40)
     
-        imageView.setUp(radius: 30)
+        imageView.setUpImageView(radius: 30)
         
-        cityName.setUp(
+        cityName.setUpLabel(
             linesNumber: 0,
             alignment: .center,
             labelText: "",
             color: .label,
             fontSize: 24, weight: .bold)
         
-        tempLabel.setUp(
+        tempLabel.setUpLabel(
             linesNumber: 1,
             alignment: .center,
             labelText: "",
             color: .label,
             fontSize: 70, weight: .bold)
         
-        descriptionLabel.setUp(
+        descriptionLabel.setUpLabel(
             linesNumber: 0,
             alignment: .center,
             labelText: "",
@@ -77,7 +127,7 @@ extension MainView {
             fontSize: 24,
             weight: .regular)
         
-        tableView.setUp(
+        tableView.setUpTable(
             handler: self,
             cellClass: TableViewCell.self,
             cellID: "Cell")
@@ -129,50 +179,5 @@ extension MainView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
-    }
-    
-    // MARK: - configuring with data
-    func configure(with viewModel: WeatherModel) {
-        self.cityName.text = viewModel.cityName
-        self.tempLabel.text = "\(viewModel.temperature) °C"
-        self.descriptionLabel.text = viewModel.description
-        self.imageView.image = UIImage(named: viewModel.conditionName)
-    }
-    
-    func configureForecast(with viewModels: [ForecastModel]) {
-        forecastArray = viewModels
-        forecastArray.removeFirst()
-        tableView.reloadData()
-    }
-}
-
-// MARK: - extension for UITableViewDataSource funcs
-extension MainView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        forecastArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "Cell",
-            for: indexPath) as? TableViewCell else {
-            return UITableViewCell()
-        }
-        cell.selectionStyle = .none
-        if !forecastArray.isEmpty {
-            let element = forecastArray[indexPath.row]
-            cell.configure(temp: element.temperature,
-                           date: element.dateTime,
-                           desc: element.description,
-                           code: element.conditionName)
-        }
-        return cell
-    }
-}
-
-// MARK: - extension for UITableViewDelegate funcs
-extension MainView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        tableView.frame.size.height / 3.5
     }
 }
