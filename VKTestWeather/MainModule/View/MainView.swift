@@ -10,12 +10,13 @@ import UIKit
 final class MainView: UIView {
     // MARK: - properties
     var mainImgView = UIImageView()
+    var geoButton = UIButton()
+    var textFiled = UITextField()
     var weatherView = UIView()
     var imageView = UIImageView()
     var cityName = UILabel()
     var tempLabel = UILabel()
     var descriptionLabel = UILabel()
-    var forecastView = UIView()
     var tableView = UITableView()
     var forecastArray = [ForecastModel]()
     
@@ -36,22 +37,23 @@ final class MainView: UIView {
 extension MainView {
     // MARK: - flow funcs
     func addViews() {
-        [mainImgView, weatherView, forecastView].forEach { addSubview($0) }
-        forecastView.addSubview(tableView)
+        [mainImgView, geoButton, textFiled, weatherView, tableView].forEach { addSubview($0) }
         [imageView, cityName, tempLabel, descriptionLabel].forEach { weatherView.addSubview($0) }
     }
     
     func configureProperties() {
         mainImgView.setUp(radius: 0)
         mainImgView.image = UIImage(named: "background")
-
+        
+        geoButton.setUpButton(image: UIImage(systemName: "location.north.circle")!, radius: 22)
+        
+        textFiled.setUpTextField()
+        textFiled.setLeftPadding(15)
+        
         weatherView.setUp(color: .clear, radius: 40)
-        weatherView.addBlur()
+        weatherView.addBlur(radius: 40)
     
         imageView.setUp(radius: 30)
-        
-        forecastView.setUp(color: .clear, radius: 40)
-        forecastView.addBlur()
         
         cityName.setUp(
             linesNumber: 0,
@@ -79,8 +81,6 @@ extension MainView {
             handler: self,
             cellClass: TableViewCell.self,
             cellID: "Cell")
-        
-        tableView.addBlur()
     }
     
     func setConstraints() {
@@ -90,10 +90,20 @@ extension MainView {
             mainImgView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mainImgView.topAnchor.constraint(equalTo: topAnchor),
             
-            weatherView.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -100),
+            geoButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            geoButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            geoButton.heightAnchor.constraint(equalToConstant: 44),
+            geoButton.widthAnchor.constraint(equalToConstant: 44),
+            
+            textFiled.topAnchor.constraint(equalTo: geoButton.topAnchor),
+            textFiled.leadingAnchor.constraint(equalTo: geoButton.trailingAnchor, constant: 10),
+            textFiled.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            textFiled.bottomAnchor.constraint(equalTo: geoButton.bottomAnchor),
+            
+            weatherView.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -20),
             weatherView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             weatherView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            weatherView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            weatherView.topAnchor.constraint(equalTo: geoButton.bottomAnchor, constant: 20),
             
             imageView.leadingAnchor.constraint(equalTo: weatherView.leadingAnchor, constant: 30),
             imageView.trailingAnchor.constraint(equalTo: weatherView.centerXAnchor, constant: -30),
@@ -114,15 +124,10 @@ extension MainView {
             descriptionLabel.trailingAnchor.constraint(equalTo: weatherView.trailingAnchor, constant: -20),
             descriptionLabel.bottomAnchor.constraint(equalTo: weatherView.bottomAnchor, constant: -20),
             
-            forecastView.topAnchor.constraint(equalTo: weatherView.bottomAnchor, constant: 20),
-            forecastView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            forecastView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            forecastView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            
-            tableView.topAnchor.constraint(equalTo: forecastView.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: forecastView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: forecastView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: forecastView.bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: weatherView.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
     

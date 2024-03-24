@@ -11,6 +11,7 @@ import UIKit
 protocol IDisplayServiceData: AnyObject {
     func displayWeatherData(with viewModel: WeatherModel)
     func displayForecastData(with viewModels: [ForecastModel])
+    func showAlert(with title: String)
 }
 
 final class MainViewController: UIViewController {
@@ -32,7 +33,40 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = contentView
-        interactor.showData()
+        contentView.geoButton.addTarget(self,
+                                        action: #selector(getGeolocation),
+                                        for: .touchUpInside)
+        contentView.textFiled.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissNumPad))
+        contentView.addGestureRecognizer(tapGesture)
+        
+        interactor.reloadDataWithGeo()
+    }
+}
+
+// MARK: - extension for objc funcs
+extension MainViewController {
+    @objc func getGeolocation() {
+        self.interactor.reloadDataWithGeo()
+    }
+    
+    @objc func dismissNumPad() {
+        contentView.endEditing(true)
+    }
+}
+
+extension MainViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else {
+            return
+        }
+        self.interactor.showData(with: text)
+        textField.text = nil
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
@@ -48,5 +82,15 @@ extension MainViewController: IDisplayServiceData {
         DispatchQueue.main.async { [weak self] in
             self?.contentView.configureForecast(with: viewModels)
         }
+    }
+    
+    func showAlert(with title: String) {
+        let alert = UIAlertController(title: title,
+                                      message: nil,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK",
+                                   style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
 }

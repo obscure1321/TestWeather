@@ -10,6 +10,7 @@ import Foundation
 protocol IPresentScreenData: AnyObject {
     func presentWeatherData(with viewModel: WeatherModel)
     func presentForecastData(with viewModel: [ForecastModel])
+    func sendAlertInfo(with info: String)
 }
 
 final class MainPresenter {
@@ -30,5 +31,9 @@ extension MainPresenter: IPresentScreenData {
     
     func presentForecastData(with viewModels: [ForecastModel]) {
         viewController?.displayForecastData(with: viewModels)
+    }
+    
+    func sendAlertInfo(with info: String) {
+        viewController?.showAlert(with: info)
     }
 }

@@ -4,5 +4,14 @@
 "onboardButton" = "Get started";
 
 // MARK: - weather manager
-
 "responseLang" = "en";
+
+// MARK: - location manager
+"alertWhenGeoDenied" = "Please allow the use of geolocation, so we can show you weather data";
+
+"alertWhenGeoDefault" = "Got some problems with using your geolocation";
+
+// MARK: - textfield
+"placeholer" = "Type city name";
+
+"alertWhenWrongCity" = "Oops! Something went wrong in fetching information";

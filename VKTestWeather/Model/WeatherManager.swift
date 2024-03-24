@@ -171,17 +171,13 @@ final class WeatherManager {
             let id = decodedData.weather[0].id
             let description = decodedData.weather[0].description
             let temp = decodedData.main.temp
-            let feelsLike = decodedData.main.feelsLike
             let name = decodedData.name
-            let wind = decodedData.wind.speed
             
             let weather = WeatherModel(
                 cityName: name, 
                 id: id,
                 description: description,
-                temperature: Int(temp),
-                feelsLike: feelsLike,
-                wind: Double(wind))
+                temperature: Int(temp))
             
             return weather
             

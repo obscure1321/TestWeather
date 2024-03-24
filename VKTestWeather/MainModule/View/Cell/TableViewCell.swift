@@ -65,20 +65,22 @@ extension TableViewCell {
     }
     
     func configureProperties() {
-        mainView.setUp(color: .lightGray, radius: 20)
-        tempLabel.setUp(linesNumber: 1,
+        mainView.setUp(color: .clear, radius: 20)
+        mainView.addBlur(radius: 20)
+        
+        tempLabel.setUp(linesNumber: 0,
                         alignment: .left,
                         labelText: "",
                         color: .label,
                         fontSize: 24,
                         weight: .bold)
-        descLabel.setUp(linesNumber: 1,
+        descLabel.setUp(linesNumber: 0,
                         alignment: .left,
                         labelText: "sfg",
                         color: .label,
                         fontSize: 20,
                         weight: .medium)
-        dateLabel.setUp(linesNumber: 1,
+        dateLabel.setUp(linesNumber: 0,
                         alignment: .right,
                         labelText: "",
                         color: .label,

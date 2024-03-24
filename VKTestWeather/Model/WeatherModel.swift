@@ -12,8 +12,6 @@ struct WeatherModel {
     let id: Int
     let description: String
     let temperature: Int
-    let feelsLike: Double
-    let wind: Double
     
     var conditionName: String {
         switch id {
