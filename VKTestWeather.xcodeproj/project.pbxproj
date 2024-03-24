@@ -61,7 +61,6 @@
 		6DCF844E2BAAB955009B08DF /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		6DCF84512BAAD2CB009B08DF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		6DCF84532BAAD2DD009B08DF /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		6DCF84552BAADDF9009B08DF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6DCF84592BAADEBE009B08DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6DCF845B2BAADEC0009B08DF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A58A5FA2846561A2F20BCB3B /* Pods-VKTestWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKTestWeather.debug.xcconfig"; path = "Target Support Files/Pods-VKTestWeather/Pods-VKTestWeather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -366,7 +365,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6DCF84272BA9EF3F009B08DF /* Base */,
-				6DCF84552BAADDF9009B08DF /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
