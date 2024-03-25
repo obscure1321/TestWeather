@@ -7,46 +7,18 @@
 
 import UIKit
 
-class OnboardingView: UIView {
+final class OnboardingView: UIView {
     // MARK: - properties
-    private var imageView: UIImageView = {
-        let element = UIImageView()
-        element.image = UIImage(named: "onboarding")
-        element.contentMode = .scaleAspectFill
-        element.clipsToBounds = true
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
-    
-    private var mainLabel: UILabel = {
-        let element = UILabel()
-        element.numberOfLines = 2
-        element.textAlignment = .center
-        element.text = NSLocalizedString("onboardingText", comment: "")
-        element.textColor = .white
-        element.font = UIFont.boldSystemFont(ofSize: 40)
-        element.adjustsFontSizeToFitWidth = true
-        element.minimumScaleFactor = 0.7
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
-    
-    var mainButton: UIButton = {
-        let element = UIButton()
-        element.setTitleColor(.white, for: .normal)
-        element.setTitle(NSLocalizedString("onboardButton", comment: ""), for: .normal)
-        element.titleLabel?.adjustsFontSizeToFitWidth = true
-        element.titleLabel?.minimumScaleFactor = 0.5
-        element.backgroundColor = .systemBlue
-        element.layer.cornerRadius = 30
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
+    let vibroGenerator = UIImpactFeedbackGenerator(style: .soft)
+    private let imageView = UIImageView()
+    private let mainLabel = UILabel()
+    let mainButton = UIButton()
     
     // MARK: - initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpView()
+        vibroGenerator.prepare()
     }
     
     required init?(coder: NSCoder) {
@@ -55,12 +27,29 @@ class OnboardingView: UIView {
 }
 
 // MARK: - extension for flow funcs
-extension OnboardingView {
+private extension OnboardingView {
     func setUpView() {
         addSubview(imageView)
         addSubview(mainLabel)
         addSubview(mainButton)
         setConstraints()
+        configureProperties()
+    }
+    
+    func configureProperties() {
+        imageView.setUpImageView(radius: 0)
+        imageView.image = UIImage(named: "onboarding")
+        
+        mainLabel.setUpLabel(
+            linesNumber: 2,
+            alignment: .center,
+            labelText: NSLocalizedString("onboardingText", comment: ""),
+            color: .white,
+            fontSize: 40,
+            weight: .bold)
+        
+        mainButton.setUpButton(image: nil,
+                               title: NSLocalizedString("onboardButton", comment: ""))
     }
     
     func setConstraints() {

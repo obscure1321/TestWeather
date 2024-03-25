@@ -4,5 +4,14 @@
 "onboardButton" = "Начать";
 
 // MARK: - weather manager
-
 "responseLang" = "ru";
+
+// MARK: - location manager
+"alertWhenGeoDenied" = "Пожалуйтса, разрешите использование геопозиции, чтобы увидеть погоду";
+
+"alertWhenGeoDefault" = "Кажется, что-то пошло не так при попытке получить геопозицию";
+
+// MARK: - textfield
+"placeholer" = "Введите название города";
+
+"alertWhenWrongCity" = "Упс! Что-то пошло не так при попытке получить инфорацию";

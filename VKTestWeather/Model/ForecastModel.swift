@@ -9,34 +9,25 @@ import Foundation
 
 struct ForecastModel {
     let temperature: Int
-    let wind: Double
     let dateTime: String
     let description: String
     let code: Int
     
     var conditionName: String {
         switch code {
-        case 200...232:
+        case 200...233:
             return "thunderStorm"
-        case 300...321:
+        case 300...522:
             return "showerRain"
-        case 500...504:
-            return "rain"
-        case 511:
+        case 600...623:
             return "snow"
-        case 520...531:
-            return "showerRain"
-        case 600...622:
-            return "snow"
-        case 701...781:
+        case 700...751:
             return "mist"
-        case 800:
+        case 800...801:
             return "clearSky"
-        case 801:
+        case 802...803:
             return "fewClouds"
-        case 802:
-            return "clouds"
-        case 803...804:
+        case 804:
             return "brokenClouds"
         default:
             return "clouds"

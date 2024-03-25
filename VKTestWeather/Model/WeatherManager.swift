@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 // MARK: - protocol to delegate
-protocol WeatherManagerDelegate {
+protocol WeatherManagerDelegate: AnyObject {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
     func didUpdateForecast(_ weatherManager: WeatherManager, forecast: [ForecastModel])
     func didFailWithError(error: WeatherError)
@@ -28,7 +28,7 @@ final class WeatherManager {
         
         static let forecastHost = "api.weatherbit.io"
         static let forecastPath = "/v2.0/forecast/daily"
-        static let forecastAPIKey = "205bfe2d7f224abda472c219ce5f208b"
+        static let forecastAPIKey = "47edaf305fac4323a57a568bee475cb4"
     }
     
     // MARK: - funcs to perform request, fetch data and parse json
@@ -164,6 +164,7 @@ final class WeatherManager {
         task.resume()
     }
     
+    // MARK: - funcs to parse the data
     func parseWeatherJSON(_ weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
@@ -171,17 +172,13 @@ final class WeatherManager {
             let id = decodedData.weather[0].id
             let description = decodedData.weather[0].description
             let temp = decodedData.main.temp
-            let feelsLike = decodedData.main.feelsLike
             let name = decodedData.name
-            let wind = decodedData.wind.speed
             
             let weather = WeatherModel(
                 cityName: name, 
                 id: id,
                 description: description,
-                temperature: Int(temp),
-                feelsLike: feelsLike,
-                wind: Double(wind))
+                temperature: Int(temp))
             
             return weather
             
@@ -201,7 +198,6 @@ final class WeatherManager {
             for datum in decodedData.data {
                 let weather = ForecastModel(
                     temperature: Int(datum.temp),
-                    wind: datum.windSpd,
                     dateTime: datum.validDate,
                     description: datum.weather.description, 
                     code: datum.weather.code
