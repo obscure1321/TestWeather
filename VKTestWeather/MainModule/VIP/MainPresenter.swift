@@ -15,7 +15,11 @@ protocol IPresentScreenData: AnyObject {
 
 final class MainPresenter {
     // MARK: - properties
+    private var weatherData: WeatherModel?
+    private var forecastData: [ForecastModel]?
     weak var viewController: IDisplayServiceData?
+    
+    private let dispatchGroup = DispatchGroup()
     
     // MARK: - initialization
     init(viewController: IDisplayServiceData? = nil) {
@@ -26,14 +30,32 @@ final class MainPresenter {
 // MARK: - extension for protocol submission
 extension MainPresenter: IPresentScreenData {
     func presentWeatherData(with viewModel: WeatherModel) {
-        viewController?.displayWeatherData(with: viewModel)
+        dispatchGroup.enter()
+        weatherData = viewModel
+        checkAndUpdateUI()
     }
     
     func presentForecastData(with viewModels: [ForecastModel]) {
-        viewController?.displayForecastData(with: viewModels)
+        dispatchGroup.enter()
+        forecastData = viewModels
+        checkAndUpdateUI()
     }
     
     func sendAlertInfo(with info: String) {
         viewController?.showAlert(with: info)
+    }
+}
+
+extension MainPresenter {
+    private func checkAndUpdateUI() {
+        dispatchGroup.leave()
+        dispatchGroup.notify(queue: .main) {
+            guard let weather = self.weatherData, let forecast = self.forecastData else {
+                print("no data yet")
+                return
+            }
+            self.viewController?.displayWeatherData(with: weather)
+            self.viewController?.displayForecastData(with: forecast)
+        }
     }
 }

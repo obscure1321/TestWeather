@@ -55,14 +55,14 @@ extension MainViewController: UITextFieldDelegate {
 // MARK: - extension for protocol submission
 extension MainViewController: IDisplayServiceData {
     func displayWeatherData(with viewModel: WeatherModel) {
-        DispatchQueue.main.async { [weak self] in
-            self?.contentView.configure(with: viewModel)
+        DispatchQueue.main.async {
+            self.contentView.configure(with: viewModel)
         }
     }
     
     func displayForecastData(with viewModels: [ForecastModel]) {
-        DispatchQueue.main.async { [weak self] in
-            self?.contentView.configureForecast(with: viewModels)
+        DispatchQueue.main.async {
+            self.contentView.configureForecast(with: viewModels)
         }
     }
     

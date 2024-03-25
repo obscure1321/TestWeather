@@ -28,7 +28,7 @@ final class WeatherManager {
         
         static let forecastHost = "api.weatherbit.io"
         static let forecastPath = "/v2.0/forecast/daily"
-        static let forecastAPIKey = "205bfe2d7f224abda472c219ce5f208b"
+        static let forecastAPIKey = "47edaf305fac4323a57a568bee475cb4"
     }
     
     // MARK: - funcs to perform request, fetch data and parse json
