@@ -5,8 +5,11 @@
 - Язык и фреймворк: **Swift, UIKit**
 - Архитектура: **Clean Architecture + Router**
 - Используемые API:
+
     [OpenWeatherMap API](https://openweathermap.org/)
+  
     [WeatherBit API](https://www.weatherbit.io/) - это API использовалось для 7 day forecast, так как в первом [API](https://openweathermap.org/) этот сервис является платным
+  
 - Работа с геопозицией через **Core Location**
 - Кэширование данных - UserDefaults
 - Локализация на 2 языка: Русский(Основной) и English
