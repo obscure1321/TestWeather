@@ -9,14 +9,16 @@ import UIKit
 
 final class OnboardingView: UIView {
     // MARK: - properties
-    private var imageView = UIImageView()
-    private var mainLabel = UILabel()
-    var mainButton = UIButton()
+    let vibroGenerator = UIImpactFeedbackGenerator(style: .soft)
+    private let imageView = UIImageView()
+    private let mainLabel = UILabel()
+    let mainButton = UIButton()
     
     // MARK: - initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpView()
+        vibroGenerator.prepare()
     }
     
     required init?(coder: NSCoder) {
@@ -47,7 +49,6 @@ private extension OnboardingView {
             weight: .bold)
         
         mainButton.setUpButton(image: nil,
-                               radius: 30,
                                title: NSLocalizedString("onboardButton", comment: ""))
     }
     

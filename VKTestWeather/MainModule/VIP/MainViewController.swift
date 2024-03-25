@@ -16,8 +16,8 @@ protocol IDisplayServiceData: AnyObject {
 
 final class MainViewController: UIViewController {
     // MARK: - properties
-    private var interactor: IBusinessLogic
-    private var contentView = MainView()    
+    private let interactor: IBusinessLogic
+    private let contentView = MainView()    
     
     // MARK: - initialization
     init(with interactor: IBusinessLogic) {
@@ -89,11 +89,10 @@ private extension MainViewController {
                                         for: .touchUpInside)
         contentView.textFiled.delegate = self
         contentView.addGestureRecognizer(tapGesture)
-        
-        interactor.reloadDataWithGeo()
     }
     
     @objc func getGeolocation() {
+        contentView.vibroGenerator.impactOccurred()
         self.interactor.reloadDataWithGeo()
     }
     

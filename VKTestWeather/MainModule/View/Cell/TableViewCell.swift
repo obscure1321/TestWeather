@@ -9,11 +9,11 @@ import UIKit
 
 final class TableViewCell: UITableViewCell {
     // MARK: - properties
-    private var mainView = UIView()
-    private var tempLabel = UILabel()
-    private var descLabel = UILabel()
-    private var dateLabel = UILabel()
-    private var imgView = UIImageView()
+    private let mainView = UIView()
+    private let tempLabel = UILabel()
+    private let descLabel = UILabel()
+    private let dateLabel = UILabel()
+    private let imgView = UIImageView()
     
     // MARK: - initialize
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

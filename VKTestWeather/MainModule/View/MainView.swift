@@ -9,15 +9,16 @@ import UIKit
 
 final class MainView: UIView {
     // MARK: - properties
-    var mainImgView = UIImageView()
-    var geoButton = UIButton()
-    var textFiled = UITextField()
-    var weatherView = UIView()
-    var imageView = UIImageView()
-    var cityName = UILabel()
-    var tempLabel = UILabel()
-    var descriptionLabel = UILabel()
-    var tableView = UITableView()
+    let vibroGenerator = UIImpactFeedbackGenerator(style: .soft)
+    let mainImgView = UIImageView()
+    let geoButton = UIButton()
+    let textFiled = UITextField()
+    let weatherView = UIView()
+    let imageView = UIImageView()
+    let cityName = UILabel()
+    let tempLabel = UILabel()
+    let descriptionLabel = UILabel()
+    let tableView = UITableView()
     var forecastArray = [ForecastModel]()
     
     // MARK: - initialize
@@ -27,6 +28,7 @@ final class MainView: UIView {
         addViews()
         configureProperties()
         setConstraints()
+        vibroGenerator.prepare()
     }
     
     required init?(coder: NSCoder) {
@@ -94,7 +96,6 @@ private extension MainView {
         mainImgView.image = UIImage(named: "background")
         
         geoButton.setUpButton(image: UIImage(systemName: "location.north.circle.fill"), 
-                              radius: 22,
                               title: nil)
         
         textFiled.setUpTextField()

@@ -9,7 +9,7 @@ import UIKit
 
 final class OnboardingViewController: UIViewController {
     // MARK: - properties
-    private var contentView = OnboardingView()
+    private let contentView = OnboardingView()
     
     // MARK: - life cycle func
     override func viewDidLoad() {
@@ -19,6 +19,7 @@ final class OnboardingViewController: UIViewController {
     }
     
     @objc private func getStarted() {
+        contentView.vibroGenerator.impactOccurred()
         UserDefaults.standard.set(true, forKey: "onboarded")
         self.dismiss(animated: true)
         Router.mainModuleScreen()

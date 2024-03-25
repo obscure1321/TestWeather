@@ -9,17 +9,19 @@ import UIKit
 
 // MARK: - UIButton
 extension UIButton {
-    func setUpButton(image: UIImage?, radius: CGFloat, title: String?) {
-        if let image = image {
-            setImage(image, for: .normal)
-        }
-        setTitle(title, for: .normal)
-        tintColor = .white
-        backgroundColor = .systemBlue
-        layer.cornerRadius = radius
-        titleLabel?.adjustsFontSizeToFitWidth = true
-        titleLabel?.minimumScaleFactor = 0.5
+    func setUpButton(image: UIImage?, title: String?) {
+        configuration = .filled()
+        configuration?.baseForegroundColor = .white
+        configuration?.baseBackgroundColor = .systemBlue
+        configuration?.cornerStyle = .capsule
         translatesAutoresizingMaskIntoConstraints = false
+        
+        if let image = image {
+            configuration?.image = image
+        }
+        if let title = title {
+            configuration?.title = title
+        }
     }
 }
 

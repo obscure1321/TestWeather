@@ -16,9 +16,9 @@ protocol IBusinessLogic: AnyObject {
 
 final class MainInteractor: NSObject {
     // MARK: - properties
-    var presenter: IPresentScreenData
-    private var weatherManager = WeatherManager()
-    private var locationManager = CLLocationManager()
+    let presenter: IPresentScreenData
+    private let weatherManager = WeatherManager()
+    private let locationManager = CLLocationManager()
     
     // MARK: - initialization
     init(with presenter: IPresentScreenData) {
@@ -27,7 +27,6 @@ final class MainInteractor: NSObject {
         weatherManager.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
     }
 }
 
@@ -52,6 +51,7 @@ extension MainInteractor: CLLocationManagerDelegate {
         switch status {
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
+            break
         case .denied:
             presenter.sendAlertInfo(with: NSLocalizedString("alertWhenGeoDenied", comment: ""))
             locationManager.requestLocation()
