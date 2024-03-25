@@ -11,7 +11,7 @@
     [WeatherBit API](https://www.weatherbit.io/) - это API использовалось для 7 day forecast, так как в первом [API](https://openweathermap.org/) этот сервис является платным
   
 - Работа с геопозицией через **Core Location**
-- Кэширование данных - UserDefaults
+- Кэширование данных: **UserDefaults**
 - Локализация на 2 языка: Русский(Основной) и English
 - Форматирование даты через **DateFormatter**
 - Порождающий паттерн: **Factory**
@@ -19,9 +19,13 @@
 - Анализ кода через **SwiftLint**
 - **Dependency Injection**: Constructor injection, Method injection
 - Адаптивная верстка интерфейса **кодом** без сторонних библиотек с соблюдением  Human Interface Guidlines. Проверено на **iPhone SE (3st generation), iPhone 15 pro, iPhone 15 Pro Max**
-- Все  UI-элементы сделаны с адаптацией под смену режима отображения**Light Mode/Dark Mode**
+- Все UI-элементы сделаны с адаптацией под смену режима отображения**Light Mode/Dark Mode**
+- Ко всем кнопкам добавлен **тактильный виброотклик** через **UIImpactFeedbackGenerator**
+- Приложение выгружено в **TestFlight** и протестировано
 
 ## Презентация
+
+![Video](https://github.com/obscure1321/TestWeather/blob/dev/Presentation/ScreenCast.gif)
 
 ## Установка
 Перед запуском приложения обязательно убедитесь, что установлены поды:
